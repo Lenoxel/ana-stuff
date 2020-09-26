@@ -1,0 +1,54 @@
+{% extends 'core/index.html' %}
+
+{% block content %}
+    <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <p style="margin-top: 1rem;">
+                <div class="panel panel-primary" style="background-color: rebeccapurple;">
+                  <div class="row panel-heading" style="padding-left: 10px; padding-top: 10px;">
+                    <div class="col-md-8">
+                      <h5 class="panel-title" id="contactLabel" style="color:azure">Alguma Pergunta ou Sugestão? Entre em contato e deixe sua mensagem.</h5>
+                    </div>
+                    <div class="col-md-4">
+                      <i class="fa fa-whatsapp" style="color: azure;"></i> <a href="https://wa.me/5581988333666" target="_blank" style="color: azure">(81) 98833-3666</a>
+                      <i class="fa fa-instagram" style="color: azure; margin-left: 5px;"></i> <a href="https://www.instagram.com/ana.cassia.545849/" target="_blank" style="color: azure">ana.cassia.545849</a>
+                    </div>
+                  </div>
+                  <form action="#" method="post" accept-charset="utf-8">
+                    <div class="row" style="padding: 10px;">
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                        <input class="form-control" name="name" placeholder="Nome" type="text" required autofocus />
+                      </div>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                        <input class="form-control" name="email" placeholder="E-mail" type="text" required />
+                      </div>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                      <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                        <input class="form-control" name="subject" placeholder="Assunto" type="text" required />
+                      </div>
+                    </div>
+                    <div class="row" style="padding: 10px;">
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                        <textarea style="resize:vertical;" class="form-control" placeholder="Escreva sua mensagem aqui..." rows="6" name="comment" required></textarea>
+                      </div>
+                    </div>
+                    <div class="panel-footer" style="padding-left: 10px; padding-right: 10px; padding-bottom: 7px !important; padding-top: 7px !important">
+                      <input style="float: right;" type="submit" class="btn btn-success" value="Enviar"/>
+                      <input type="reset" class="btn btn-danger" value="Limpar" />
+                    </div>
+                  </form>
+                </div>
+            </p>
+        </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+{% endblock %}
