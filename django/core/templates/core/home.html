@@ -2,9 +2,9 @@
 
 {% block content %}
   <!-- Page Content -->
-  <div class="container">
+  <div class="container" style="background: linear-gradient(225deg, rgba(199, 230, 255, .5), rgba(206, 230, 252, .5), #fde9e380 48%, rgba(215, 254, 255, .5)); border-radius: 5px;">
 
-    <div class="row">
+    <div class="row" >
 
       <div class="col-lg-3">
 
@@ -20,8 +20,8 @@
 
       <div class="col-lg-9">
         <header style="padding-bottom: 10px;">
-          <div class="text-center" style="background-color: rebeccapurple; margin-top: 20px;">
-            <img src="/media/img/logo.png" alt="Coisas de Ana" style="max-width: 900px; max-height: 347px;">
+          <div class="text-center" style="background: linear-gradient(to right, rebeccapurple, blueviolet); border-radius: 5px; margin-top: 20px;">
+            <img src="/media/img/logo.png" alt="Anarti!" style="max-width: 900px; max-height: 347px;">
           </div>
         </header>
         {% comment %} <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -63,9 +63,9 @@
                               <a href="#">{{product.name}}</a>
                           </h4>
                           {% if product.price %}
-                              <h5>R$ {{product.price}} 
+                              <h5>R$ {{product.price}}
                                 {% if product.quantity > 0 %}
-                                  <span class="badge badge-pill badge-info">{{product.quantity}}</span> 
+                                  <span class="badge badge-pill badge-info">{{product.quantity}}</span>
                                 {% else %}
                                   <span class="badge badge-pill badge-secondary">Sob demanda</span>
                                 {% endif %}
@@ -79,9 +79,12 @@
                       </div>
                       <div class="card-footer">
                         {% load core_extras %}
-                        <small class="text-muted">{{ evaluations|get_evaluation_average:product.pk }}</small>
-                        <div class="d-inline float-right">
+                        <div class="d-inline float-left border-bottom" style="padding-bottom: 10px">
+                          <a href="https://api.whatsapp.com/send?phone=+5581988333666&text=Olá Ana! Eu estava vendo o seu site e gostaria de encomendar o produto {{product.name}}". target="_blank" type="button" class="btn btn-sm btn-outline-primary" style="color: #3e6794;">Encomende</a>
                           <button onclick="showEvaluationModal({{product.pk}},'{{product.name}}')" type="button" class="btn btn-sm btn-outline-primary evaluation-button" data-rated="alreadyRated_{{product.pk}}">Avalie</button>
+                        </div>
+                        <div class="d-inline float-left" style="margin-left: 2px;">
+                          <small class="text-muted">{{ evaluations|get_evaluation_average:product.pk }}</small>
                         </div>
                       </div>
                   </div>
@@ -145,5 +148,3 @@
     </div>
   </div>
 {% endblock %}
-
-  

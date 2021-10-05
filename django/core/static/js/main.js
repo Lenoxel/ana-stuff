@@ -63,7 +63,7 @@ function showEvaluationModal(pk, name) {
     if (pk && name) {
         let buttonSubmitEvaluation = $("#submit_evaluation");
         buttonSubmitEvaluation[0].dataset.productId = pk;
-        
+
         $('#evaluatorName').val("");
         $('#evaluatorEmail').val("");
         $('#evaluatorComment').val("");
