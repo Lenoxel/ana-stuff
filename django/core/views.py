@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Category, Product, Evaluation
+from .models import Category, Product, Evaluation, SendMessage
 from django.http import HttpResponse
 from django.db.models import Avg
 
@@ -17,7 +17,7 @@ def home(request):
         'products': products,
         'evaluations': dict_evaluations
     }
-    
+
     return render(request, 'core/home.html', context)
 
 def about(request):
@@ -44,10 +44,29 @@ def product_evaluation(request):
             'evaluator_evaluation': evaluator_evaluation,
             'product_id': product_id
         }
-    
+
         evaluation = Evaluation()
         evaluation.intialize_object(evaluation_object)
         evaluation.save()
+    return HttpResponse()
+
+def send_message(request):
+    if request.is_ajax() and request.POST:
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        comment = request.POST.get('comment')
+
+        send_message_object = {
+            'name': name,
+            'email': email,
+            'subject': subject,
+            'comment': comment
+        }
+
+        send_message = SendMessage()
+        send_message.intialize_object(send_message_object)
+        send_message.save()
     return HttpResponse()
 
 

@@ -2,23 +2,21 @@
 
 {% block content %}
   <!-- Page Content -->
-  <div class="container" style="background: linear-gradient(225deg, rgba(199, 230, 255, .5), rgba(206, 230, 252, .5), #fde9e380 48%, rgba(215, 254, 255, .5)); border-radius: 5px;">
+  <div class="container border rounded">
 
     <div class="row" >
 
-      <div class="col-lg-3">
-
-        <h5 class="my-4" style="text-align: center;">Selecione uma categoria</h5>
+      <div class="col-lg-3 col-md-3 col-xs-12">
+        <h5 class="my-4 border-left rounded" style="text-align: center;">Selecione uma categoria</h5>
         <div class="list-group" id="categoryList">
           {% for category in categories %}
             <a href="#" class="list-group-item list-group-item-action" id="{{category.name}}">{{category.name}}</a>
           {% endfor %}
         </div>
-
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9">
+      <div class="col-lg-9 col-md-9 col-xs-12">
         <header style="padding-bottom: 10px;">
           <div class="text-center" style="background: linear-gradient(to right, rebeccapurple, blueviolet); border-radius: 5px; margin-top: 20px;">
             <img src="/media/img/logo.png" alt="Anarti!" style="max-width: 900px; max-height: 347px;">
@@ -80,8 +78,8 @@
                       <div class="card-footer">
                         {% load core_extras %}
                         <div class="d-inline float-left border-bottom" style="padding-bottom: 10px">
-                          <a href="https://api.whatsapp.com/send?phone=+5581988333666&text=Olá Ana! Eu estava vendo o seu site e gostaria de encomendar o produto {{product.name}}". target="_blank" type="button" class="btn btn-sm btn-outline-primary" style="color: #3e6794;">Encomende</a>
-                          <button onclick="showEvaluationModal({{product.pk}},'{{product.name}}')" type="button" class="btn btn-sm btn-outline-primary evaluation-button" data-rated="alreadyRated_{{product.pk}}">Avalie</button>
+                          <a href="https://api.whatsapp.com/send?phone=+5581988333666&text=Olá Ana! Eu estava vendo o seu site e gostaria de encomendar o produto {{product.name}}." target="_blank" type="button" class="btn btn-sm btn-outline-primary" style="color: #3e6794;">Encomende</a>
+                          <button onclick="showEvaluationModal('{{product.pk}}', '{{product.name}}')" type="button" class="btn btn-sm btn-outline-primary evaluation-button" data-rated="alreadyRated_{{product.pk}}">Avalie</button>
                         </div>
                         <div class="d-inline float-left" style="margin-left: 2px;">
                           <small class="text-muted">{{ evaluations|get_evaluation_average:product.pk }}</small>
@@ -121,7 +119,7 @@
             <div class="form-group">
               <label for="evaluatorEmail" class="col-form-label">Email</label>
               <input type="email" class="form-control" id="evaluatorEmail" aria-describedby="emailHelp" placeholder="Digite o seu email...">
-              <small id="emailHelp" class="form-text text-muted">Nunca compartilharemos o seu email com ninguém.</small>
+              <small id="emailHelp" class="form-text text-muted">O seu email não será compartilhado com ninguém.</small>
             </div>
             <div class="form-group">
               <label for="evaluatorComment" class="col-form-label">Comentário</label>

@@ -42,10 +42,10 @@ class Evaluation(models.Model):
     objects = models.Manager()
 
     product_id = models.ForeignKey('core.Product', verbose_name='Produto', on_delete=models.CASCADE)
-    evaluator_name = models.CharField('Avaliador', max_length=60)
+    evaluator_name = models.CharField('Avaliador', max_length=80)
     evaluator_email = models.EmailField('Email')
     evaluation = models.PositiveSmallIntegerField('Avaliação')
-    comment = models.TextField('Comentário', max_length=200)
+    comment = models.TextField('Comentário', max_length=300)
     creationDate = models.DateTimeField('Criado em', auto_now_add=True)
 
     def intialize_object(self, evaluation_object):
@@ -62,6 +62,29 @@ class Evaluation(models.Model):
 
     def __str__(self):
         if self.evaluation > 1:
-            return '{} - {} estrelas'.format(self.evaluator_name, self.evaluation)
+            return '{}, em {} - {} estrelas'.format(self.evaluator_name, self.creationDate.strftime('%d/%m/%Y %H:%M:%S'), self.evaluation)
         else:
-            return '{} - {} estrela'.format(self.evaluator_name, self.evaluation)
+            return '{}, em {} - {} estrela'.format(self.evaluator_name, self.creationDate.strftime('%d/%m/%Y %H:%M:%S'), self.evaluation)
+
+class SendMessage(models.Model):
+    objects = models.Manager()
+
+    name = models.CharField('Nome', max_length=80)
+    email = models.EmailField('Email')
+    subject = models.CharField('Nome', max_length=120)
+    comment = models.TextField('Comentário', max_length=600)
+    sendDate = models.DateTimeField('Enviado em', auto_now_add=True)
+
+    def intialize_object(self, send_message_object):
+        self.name = send_message_object.get('name')
+        self.email = send_message_object.get('email')
+        self.subject = send_message_object.get('subject')
+        self.comment = send_message_object.get('comment')
+
+    class Meta:
+        verbose_name = 'Mensagem'
+        verbose_name_plural = 'Mensagens Recebidas'
+        ordering = ['sendDate']
+
+    def __str__(self):
+        return '{}, em {}'.format(self.name, self.sendDate.strftime('%d/%m/%Y %H:%M:%S'))

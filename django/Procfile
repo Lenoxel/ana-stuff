@@ -1,0 +1,1 @@
+web: gunicorn anastuff.wsgi --log-file -
